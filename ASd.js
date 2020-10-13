@@ -16,17 +16,16 @@ import Map from "./Map";
 import "leaflet/dist/leaflet.css";
 
 const App = () => {
-  const [country, setInputCountry] = useState("worldwide"); //Set the default value to worldwide
+  const [country, setInputCountry] = useState("worldwide");
   const [countryInfo, setCountryInfo] = useState({});
   const [countries, setCountries] = useState([]);
   const [mapCountries, setMapCountries] = useState([]);
   const [tableData, setTableData] = useState([]);
   const [casesType, setCasesType] = useState("cases");
-  const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 }); //Set the default map to be centred at the specific position
-  const [mapZoom, setMapZoom] = useState(3); //Set the map zoom size to 3, so the map wont go beyond the zoom size
+  const [mapCenter, setMapCenter] = useState({ lat: 34.80746, lng: -40.4796 });
+  const [mapZoom, setMapZoom] = useState(3);
 
   useEffect(() => {
-    //Get all the data from diseaseAPI and set the data into setCountryInfo
     fetch("https://disease.sh/v3/covid-19/all")
       .then((response) => response.json())
       .then((data) => {
@@ -59,7 +58,7 @@ const App = () => {
     const countryCode = e.target.value;
 
     const url =
-      countryCode === "worldwide" //If the country code is worldwide, then get the "all" else  //insert the countrycode in the last bit of the url
+      countryCode === "worldwide"
         ? "https://disease.sh/v3/covid-19/all"
         : `https://disease.sh/v3/covid-19/countries/${countryCode}`;
     await fetch(url)

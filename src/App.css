@@ -1,3 +1,9 @@
+.app {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
 .app__header {
   display: flex;
   align-items: center;
@@ -6,13 +12,21 @@
 }
 
 body {
-  background-color: lightgray;
+  background-color: lightblue;
 }
 .app__stats {
   display: flex;
   justify-content: space-between;
 }
 
-.app {
-  margin-left: 20px;
+/* A media query for when the screen is smaller then 990px then make the 
+flex direction to column */
+@media (max-width: 990px) {
+  .app {
+    flex-direction: column;
+  }
+}
+
+.app__left {
+  flex: 0.9;
 }
